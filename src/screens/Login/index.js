@@ -10,6 +10,7 @@ import {
   Keyboard,
   TouchableOpacity,
   Text,
+  ToastAndroid
 } from "react-native";
 import FormInput from "../../components/Authentication/FormInput";
 import ButtonSubmit from "../../components/Authentication/ButtonSubmit";
@@ -23,12 +24,10 @@ const Login = () => {
   const authContext = useContext(AuthenticationContext);
   const { state, login } = authContext;
   useEffect(() => {
-    if (state.isAuthenticated) {
-      console.log(state);
-    } else {
-      console.log(state.messageError);
+    if(state.messageError){
+      ToastAndroid.showWithGravity(state.messageError, ToastAndroid.LONG, ToastAndroid.TOP);
     }
-  }, [state.isAuthenticated]);
+  }, [state.messageError]);
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView style={styles.container}>

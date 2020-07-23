@@ -23,16 +23,18 @@ const HomeNavigator = () => {
   const authContext = useContext(AuthenticationContext);
   const [checkParent, setCheckParent] = useState(false);
   useEffect(() => {
-    if(authContext.state.userInfo.parent){
-        setCheckParent(true)
+    if (authContext.state.userInfo.parent) {
+      setCheckParent(true);
     }
   }, [authContext.state.userInfo.parent]);
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
-        name={checkParent === true ? HomeParentScreen : HomeChildScreen}
-        component={checkParent === true ? HomeParent : HomeChild}
-        options={{ title: checkParent === true ? "Home Parent" : "Home Child" }}
+        name={checkParent === false ? HomeChildScreen : HomeParentScreen}
+        component={checkParent === false ? HomeChild: HomeParent}
+        options={{
+          headerShown: false,
+        }}
       />
     </Stack.Navigator>
   );

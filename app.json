@@ -21,6 +21,14 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "android": {
+      "package": "ca.brentvatne.growlerprowler",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyC27eftlXiNBGSRoaqZq81WIQ1sDNfrxkU"
+        }
+      }
     }
   }
 }

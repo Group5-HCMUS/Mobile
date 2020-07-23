@@ -1,38 +1,15 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/AntDesign';
-import HomeNavigator from './HomeNavigator';
+import {createStackNavigator} from '@react-navigation/stack';
 import { HomeNavigatorScreen } from '../../global/constants/screen-name';
-const Tab = createBottomTabNavigator();
-const RootTab = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
-          let iconName;
-          if (route.name === "Home") {
-            iconName = 'home';
-          }
+import HomeNavigator from './HomeNavigator';
 
-          // You can return any component that you like here!
-          return <Icon name={iconName} size={size} color={color} />;
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: '#1565c0',
-        inactiveTintColor: 'gray',
-        style: {
-          backgroundColor: '#fff',
-        },
-      }}
-      navigationOptions={{
-        header: {
-          visible: true,
-        },
-      }}>
-      <Tab.Screen name="Home" component={HomeNavigator} />
-    </Tab.Navigator>
+const AppStack = createStackNavigator();
+const AppNavigator = () => {
+  return (
+    <AppStack.Navigator headerMode="none">
+      <AppStack.Screen name={HomeNavigatorScreen} component={HomeNavigator}/>
+    </AppStack.Navigator>
   );
 };
 
-export default RootTab;
+export default AppNavigator;

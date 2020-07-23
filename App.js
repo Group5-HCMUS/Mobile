@@ -5,6 +5,7 @@ import SplashScreen from "./src/screens/SplashScreen";
 import Login from "./src/screens/Login";
 import { AuthenticationProvider } from "./src/providers/authentication-provider";
 import RootStack from "./src/navigation";
+import { UserProvider } from "./src/providers/user-provider";
 
 export default function App() {
   // const [currentScreen, setCurrentScreen] = useState('SplashScreen');
@@ -16,10 +17,12 @@ export default function App() {
   // }, []);
   return (
     <AuthenticationProvider>
-      <View style={styles.container}>
-        <StatusBar backgroundColor="#fff" />
-        <RootStack />
-      </View>
+      <UserProvider>
+        <View style={styles.container}>
+          <StatusBar backgroundColor="#fff" />
+          <RootStack />
+        </View>
+      </UserProvider>
     </AuthenticationProvider>
   );
 }
